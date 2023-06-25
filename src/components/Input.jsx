@@ -1,10 +1,11 @@
 import { useState } from "react";
+
 import { styled } from "styled-components";
+import { ButtonContainer } from "components/Button";
 
 const Input = () => {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
-  const [test, setTest] = useState("");
 
   // 가격을 백 단위마다 ,로 구분해주는 함수
   const changeEnteredNum = (e) => {
@@ -38,7 +39,9 @@ const Input = () => {
           value={price}
           onChange={(e)=>{changeEnteredNum(e)}}
         />
-        <button>저장</button>
+        <ButtonContainer bc="#55efc4" color="#000" size="small">
+          저장
+        </ButtonContainer>
       </form>
     </>
   );
