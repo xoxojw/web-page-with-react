@@ -1,73 +1,122 @@
-import { styled } from "styled-components";
+import { styled, css } from "styled-components"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faBell } from "@fortawesome/free-regular-svg-icons";
 
 const Button = () => {
+  
   return (
-    <ThemeBox>
-      <h1>Button</h1>
-      <ElementsBox>
-        <PrimaryButton
-          width="15vh" height="5vh" fontWeight="700"
-          onClick={()=>{alert("버튼을 만들어보세요")}}>
+    <>
+      <h2>Button</h2>
+      <div>
+        <ButtonContainer
+          bc="#55efc4"
+          color="#000"
+          size="large"
+          outlined={true}
+          rightIcon={<FontAwesomeIcon icon={faAngleRight} />}
+          onClick={()=>{alert('버튼을 만들어보세요')}}
+        >
           Large Primary Button
-        </PrimaryButton>
-        <PrimaryButton width="12vh" height="4vh">
+        </ButtonContainer>
+        <ButtonContainer bc="#55efc4" color="#000" size="medium">
           Medium
-        </PrimaryButton>
-        <PrimaryButton width="9vh" height="3.5vh">
+        </ButtonContainer>
+        <ButtonContainer bc="#55efc4" color="#000" size="small">
           Small
-        </PrimaryButton>
-      </ElementsBox>
-      <ElementsBox>
-        <NegativeButton
-          width="15vh" height="5vh" fontWeight="700"
-          onClick={()=>{prompt("어렵나요?")}}>
+        </ButtonContainer>
+      </div>
+      <div>
+        <ButtonContainer
+          bc="#fab1a0"
+          color="#d63031"
+          size="large"
+          outlined={true}
+          rightIcon={<FontAwesomeIcon icon={faBell} />}
+          onClick={()=>{prompt('어렵나요?')}}
+        >
           Large Negative Button
-        </NegativeButton>
-        <NegativeButton width="12vh" height="4vh">
+        </ButtonContainer>
+        <ButtonContainer bc="#fab1a0" color="#d63031" size="medium">
           Medium
-        </NegativeButton>
-        <NegativeButton width="9vh" height="3.5vh">
+        </ButtonContainer>
+        <ButtonContainer bc="#fab1a0" color="#d63031" size="small">
           Small
-        </NegativeButton>
-      </ElementsBox>
-    </ThemeBox>
-  );
-};
+        </ButtonContainer>
+      </div>
+    </>
+  )
+}
 
 export default Button;
 
-const ThemeBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
+const ButtonContainer = ({ children, ...rest }) => {
+  return (
+    <>
+      <StButton {...rest}>{children}{rest.rightIcon}</StButton>
+    </>
+  )
 
-const ElementsBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1vh;
-`;
+};
 
-const PrimaryButton = styled.button`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  font-weight: ${(props) => props.fontWeight};
+const StButton = styled.button`
   border: none;
-  border-radius: 10px;
-  outline: none;
-  background-color: #55efc4;
   cursor: pointer;
-`;
+  border-radius: 10px;
 
-const NegativeButton = styled.button`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  font-weight: ${(props) => props.fontWeight};
-  border: none;
-  border-radius: 10px;
-  outline: none;
-  background-color: #fab1a0;
-  color: #d63031;
-  cursor: pointer;
+  background-color: ${({ bc }) => bc};
+  color: ${({ color }) => color};
+  font-weight: 0;
+
+  ${({ size }) => {
+  switch (size) {
+    case "large":
+      return css`
+        width: 200px;
+        height: 50px;`
+    case "medium":
+      return css`
+        width: 120px;
+        height: 45px;`
+    case "small":
+      return css`
+        width: 100px;
+        height: 35px;`
+    }
+  }}
+
+  /* width: ${({ size }) => {
+    switch (size) {
+      case "large":
+        return "200px";
+      case "medium":
+        return "150px";
+      case "small":
+        return "100px";
+    }}
+};
+  
+  height: ${
+  ({ size }) => {
+    switch (size) {
+      case "large":
+        return "50px";
+      case "medium":
+        return "40px";
+      case "small":
+        return "30px";
+    }}
+}; */
+
+  ${({ outlined, bc }) => {
+  if (outlined) {
+    return css`
+      border: 3px solid ${bc};
+      background-color: #fff;
+      font-weight: 700;
+      `
+    }
+  }}
+
+  margin: 5px;
 `;
