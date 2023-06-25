@@ -18,8 +18,9 @@ export default Selects;
 
 const StBox = styled.div`
   display: flex;
+  flex-direction: column;
   border: 1px solid black;
   width: 500px;
-  height: 200px;
+  height: 350px;
   overflow: hidden;
 `;
