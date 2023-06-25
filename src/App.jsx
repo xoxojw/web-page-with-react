@@ -9,6 +9,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
+      <h1>웹 프론트엔드 연습 | Lv. 3 과제</h1>
       <Button />
       <Input />
       <Modal />

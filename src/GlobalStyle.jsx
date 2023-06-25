@@ -23,6 +23,14 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 700;
   }
 
+  h2 {
+    display: block;
+    margin-block-start: 2vh;
+    margin-block-end: 2vh;
+    font-size: 1.6em;
+    font-weight: 700;
+  }
+
   div {
     margin: 1vh;
   }
