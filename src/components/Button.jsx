@@ -50,7 +50,7 @@ const Button = () => {
 
 export default Button;
 
-const ButtonContainer = ({ children, ...rest }) => {
+export const ButtonContainer = ({ children, ...rest }) => {
   return (
     <>
       <StButton {...rest}>{children}{rest.rightIcon}</StButton>
@@ -80,7 +80,7 @@ const StButton = styled.button`
         height: 45px;`
     case "small":
       return css`
-        width: 100px;
+        width: 80px;
         height: 35px;`
     }
   }}
