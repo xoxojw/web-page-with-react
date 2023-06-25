@@ -76,12 +76,12 @@ const StButton = styled.button`
         height: 50px;`
     case "medium":
       return css`
-        width: 120px;
+        width: 140px;
         height: 45px;`
     case "small":
       return css`
-        width: 80px;
-        height: 35px;`
+        width: 100px;
+        height: 40px;`
     }
   }}
 
